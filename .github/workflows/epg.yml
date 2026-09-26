@@ -1,0 +1,31 @@
+# Teledastur: har 6 soatda yangilanadi (epg/<davlat>.json)
+name: Teledastur
+
+on:
+  schedule:
+    - cron: "37 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  epg:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Teledasturni yig'ish
+        run: |
+          git clone -q --depth 1 https://github.com/iptv-org/database.git iptv-database
+          python3 tools/epg.py iptv-database/data
+      - name: Saqlash
+        run: |
+          rm -rf iptv-database
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add epg
+          git diff --cached --quiet || (git commit -q -m "Teledastur: $(date -u +%Y-%m-%dT%H:%M)" && git push)

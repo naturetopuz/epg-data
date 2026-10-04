@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Toshkent Biznes</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Toshkent Biznes">
+<meta name="theme-color" content="#0E1222">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* iPhone: chekkadagi "chuqurcha" (notch) ostida qolib ketmasin */
+  .screen { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+  /* Telefon tik holatda bo'lsa — eniga burish haqida eslatma */
+  #rotateHint { display: none; position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 999; background: #0E1222;
+    color: #FFEFC4; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px;
+    font: 700 19px/1.4 Roboto, system-ui, -apple-system, sans-serif; gap: 18px; }
+  #rotateHint .ph { width: 64px; height: 108px; border: 5px solid #F5C04A; border-radius: 14px; animation: rot 2.2s ease-in-out infinite; }
+  @keyframes rot { 0%, 25% { transform: rotate(0); } 55%, 100% { transform: rotate(-90deg); } }
+  @media (orientation: portrait) and (max-width: 600px) { #rotateHint { display: flex; } }
+</style>
+</head>
+<body>
+<div id="rotateHint"><div class="ph"></div><div>Telefonni eniga (yotqizib) ushlang</div></div>
+
+<!-- Bosh menyu -->
+<section id="menu" class="screen on">
+  <div class="menu-wrap">
+    <svg class="skyline" viewBox="0 0 360 150" aria-hidden="true">
+      <defs>
+        <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD978"/><stop offset="1" stop-color="#C98A1B"/></linearGradient>
+        <linearGradient id="sb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5C6BC0"/><stop offset="1" stop-color="#2A3170"/></linearGradient>
+      </defs>
+      <circle cx="292" cy="40" r="20" fill="#FFE8A3" opacity=".18"/>
+      <!-- binolar -->
+      <rect x="18" y="78" width="30" height="62" rx="2" fill="url(#sb)"/>
+      <rect x="52" y="60" width="24" height="80" rx="2" fill="url(#sb)"/>
+      <rect x="250" y="70" width="28" height="70" rx="2" fill="url(#sb)"/>
+      <rect x="282" y="52" width="22" height="88" rx="2" fill="url(#sb)"/>
+      <rect x="308" y="82" width="34" height="58" rx="2" fill="url(#sb)"/>
+      <g fill="#FFE39A" opacity=".55">
+        <rect x="24" y="86" width="4" height="4"/><rect x="34" y="86" width="4" height="4"/><rect x="24" y="98" width="4" height="4"/><rect x="38" y="110" width="4" height="4"/>
+        <rect x="57" y="70" width="4" height="4"/><rect x="66" y="82" width="4" height="4"/><rect x="57" y="96" width="4" height="4"/>
+        <rect x="256" y="80" width="4" height="4"/><rect x="266" y="92" width="4" height="4"/><rect x="287" y="62" width="4" height="4"/>
+        <rect x="294" y="78" width="4" height="4"/><rect x="314" y="92" width="4" height="4"/><rect x="326" y="104" width="4" height="4"/>
+      </g>
+      <!-- teleminora -->
+      <path d="M96 140 L104 40 L108 40 L116 140 Z" fill="url(#sg)"/>
+      <rect x="105" y="4" width="2" height="38" fill="#FFD978"/>
+      <ellipse cx="106" cy="58" rx="11" ry="6" fill="#FFD978"/>
+      <ellipse cx="106" cy="86" rx="8" ry="4.5" fill="#F0B43A"/>
+      <!-- masjid gumbazi va minoralar -->
+      <rect x="140" y="30" width="9" height="110" fill="url(#sg)"/><path d="M138 30 L144.5 16 L151 30 Z" fill="#8FD3FF"/>
+      <rect x="211" y="30" width="9" height="110" fill="url(#sg)"/><path d="M209 30 L215.5 16 L222 30 Z" fill="#8FD3FF"/>
+      <rect x="152" y="90" width="56" height="50" fill="url(#sg)"/>
+      <path d="M156 92 Q180 38 204 92 Z" fill="#4FB7F0"/>
+      <path d="M156 92 Q180 38 204 92" fill="none" stroke="#FFE39A" stroke-width="2"/>
+      <rect x="178" y="44" width="4" height="10" fill="#FFE39A"/>
+      <path d="M170 140 L170 112 Q180 100 190 112 L190 140 Z" fill="#2A3170"/>
+      <rect x="0" y="139" width="360" height="11" fill="#1B2150"/>
+    </svg>
+    <div class="logo"><div class="l1">TOSHKENT</div><div class="l2">BIZNES</div></div>
+    <div class="profile">
+      <div class="av" id="profAv">🚗</div>
+      <div><div class="nm" id="profName">O'yinchi</div><div class="sub">Profilingiz</div></div>
+      <button class="btn small ghost" id="profEdit">O'zgartirish</button>
+    </div>
+    <div class="menu-btns">
+      <button class="btn gold" id="mContinue" style="display:none">▶ Davom ettirish</button>
+      <button class="btn green" id="mNew">🎲 Kompyuter bilan o'ynash</button>
+      <button class="btn blue" id="mOnline">🌐 Onlayn o'ynash</button>
+      <button class="btn ghost" id="mRules">📖 O'yin qoidalari</button>
+    </div>
+    <div class="menu-foot">
+      <button class="btn small ghost" id="mSound">🔊 Ovoz: yoqilgan</button>
+    </div>
+  </div>
+</section>
+
+<!-- Yangi o'yin sozlamalari -->
+<section id="setup" class="screen">
+  <div class="topbar">
+    <button class="iconbtn" data-back="menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <h2 id="setupTitle">Yangi o'yin</h2>
+  </div>
+  <div class="scroll">
+    <div class="sec-title">O'yinchilar (<span id="pcount">4</span>/6)</div>
+    <div id="plist"></div>
+    <button class="btn ghost wide" id="addP">＋ O'yinchi qo'shish</button>
+    <div class="sec-title">Qoidalar</div>
+    <div class="setrow"><div><div class="t">Boshlang'ich pul</div></div>
+      <div class="seg" id="optMoney"><button data-v="10000">10 mln</button><button data-v="15000" class="on">15 mln</button><button data-v="20000">20 mln</button></div></div>
+    <div class="setrow"><div><div class="t">O'yin davomiyligi</div><div class="d">Raund tugaganda eng boy o'yinchi yutadi</div></div>
+      <div class="seg" id="optRounds"><button data-v="0" class="on">Cheksiz</button><button data-v="25">25</button><button data-v="50">50</button></div></div>
+    <div class="setrow"><div><div class="t">Auksion</div><div class="d">Sotib olinmagan mulk auksionga chiqadi</div></div><div class="switch on" id="optAuction"></div></div>
+    <div class="setrow"><div><div class="t">Choyxona xazinasi</div><div class="d">Soliq va jarimalar yig'iladi, Choyxonaga tushgan oladi</div></div><div class="switch" id="optJackpot"></div></div>
+  </div>
+  <div class="bottombar"><button class="btn gold wide" id="startGame" style="min-height:54px;font-size:17px">Boshlash ▶</button></div>
+</section>
+
+<!-- Onlayn -->
+<section id="online" class="screen">
+  <div class="topbar">
+    <button class="iconbtn" id="onBack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <h2 id="onTitle">Onlayn o'yin</h2>
+  </div>
+  <div class="scroll" id="onBody"></div>
+  <div class="bottombar" id="onFoot"></div>
+</section>
+
+<!-- O'yin -->
+<section id="game" class="screen">
+  <div class="gtop">
+    <button class="iconbtn" id="gMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <div class="info"><span class="pill" id="roundPill">Raund <b>1</b></span><span class="pill" id="potPill" style="display:none">☕ <b>0</b></span><span class="pill" id="onPill" style="display:none">🌐 <b id="onCode"></b></span></div>
+    <button class="iconbtn" id="gSound"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 8.5a5 5 0 0 1 0 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg></button>
+  </div>
+  <div class="gmain">
+    <div class="boardwrap"><div id="boardTilt"><div id="board"></div></div></div>
+    <div class="side">
+      <div class="players" id="players"></div>
+    </div>
+  </div>
+  <div class="gbar">
+    <button class="btn" id="bProps">🏠 Mulklarim</button>
+    <button class="btn" id="bTrade">🤝 Savdo</button>
+    <button class="btn" id="bLog">📜 Jurnal</button>
+  </div>
+</section>
+
+<div id="sheet"></div>
+<div id="modal"></div>
+<div id="toast"></div>
+
+<script src="engine.js"></script>
+<script src="bot.js"></script>
+<script src="roomclient.js"></script>
+<script src="sound.js"></script>
+<script src="ui.js"></script>
+<script src="online.js"></script>
+</body>
+</html>

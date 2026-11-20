@@ -1,0 +1,42 @@
+# Tik Ko'r ilovasi uchun: bepul serverlarni har soatda sinab, ishlaydiganlarini
+# "tik-serverlar" tarmog'iga servers.json qilib yozadi. Ilova shu ro'yxatni oladi.
+name: Tik Ko'r serverlari
+
+on:
+  schedule:
+    - cron: "11 * * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ["tik-serverlar/**", ".github/workflows/tik-serverlar.yml"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tik-serverlar
+  cancel-in-progress: false
+
+jobs:
+  sinov:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Xray'ni yuklab olish
+        run: |
+          curl -sSL -o /tmp/xray.zip https://github.com/XTLS/Xray-core/releases/download/v26.11.9/Xray-linux-64.zip
+          mkdir -p /tmp/xray && unzip -q -o /tmp/xray.zip -d /tmp/xray && chmod +x /tmp/xray/xray
+          /tmp/xray/xray version | head -1
+      - name: Serverlarni yig'ish va sinash
+        run: python3 tik-serverlar/sinov.py /tmp/xray/xray /tmp/servers.json
+      - name: Natijani saqlash
+        run: |
+          cp hisobot.txt /tmp/hisobot.txt
+          mkdir -p /tmp/out && cp /tmp/servers.json /tmp/hisobot.txt /tmp/out/
+          cd /tmp/out
+          git init -q -b tik-serverlar
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A && git commit -q -m "Serverlar: $(date -u +%Y-%m-%dT%H:%M)"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" tik-serverlar

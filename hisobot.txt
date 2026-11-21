@@ -1,0 +1,35 @@
+   199 ta  https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/v2ray/super-sub.txt
+  1053 ta  https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/verified/configs_base64.txt
+  2000 ta  https://raw.githubusercontent.com/morpheusadam/v2ray-config/main/subs/bundles/best.txt
+  3971 ta  https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/v2ray/all_sub.txt
+  1901 ta  https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/sub/vmess.txt
+  1898 ta  https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/sub/ss.txt
+   858 ta  https://raw.githubusercontent.com/0xRadikal/Free-v2ray-Configs/main/protocols/shadowsocks.txt
+  5407 ta  https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/sub/vless.txt
+  1369 ta  https://raw.githubusercontent.com/hamedcode/port-based-v2ray-configs/main/sub/trojan.txt
+   195 ta  https://raw.githubusercontent.com/MatinGhanbari/v2ray-configs/main/subscriptions/v2ray/subs/sub1.txt
+jami noyob: 8981
+xray qabul qildi: 2235
+sinaldi 200/2235, ishlaydi: 20
+sinaldi 400/2235, ishlaydi: 38
+sinaldi 600/2235, ishlaydi: 52
+sinaldi 800/2235, ishlaydi: 74
+sinaldi 1000/2235, ishlaydi: 97
+sinaldi 1200/2235, ishlaydi: 122
+sinaldi 1400/2235, ishlaydi: 148
+sinaldi 1600/2235, ishlaydi: 171
+sinaldi 1800/2235, ishlaydi: 186
+sinaldi 2000/2235, ishlaydi: 205
+sinaldi 2200/2235, ishlaydi: 231
+sinaldi 2235/2235, ishlaydi: 233
+tayyor: 40 ta server (386 s)
+  vless       tcp       67 ms  45915 kbit/s
+  vmess       tcp       70 ms 128442 kbit/s
+  shadowsocks tcp       87 ms  32496 kbit/s
+  shadowsocks tcp       93 ms 129568 kbit/s
+  vmess       tcp      108 ms 100010 kbit/s
+  vmess       tcp      125 ms  66695 kbit/s
+  shadowsocks tcp      145 ms  50732 kbit/s
+  shadowsocks tcp      152 ms  31863 kbit/s
+  vless       tcp      154 ms  83097 kbit/s
+  vmess       tcp      156 ms  53887 kbit/s
